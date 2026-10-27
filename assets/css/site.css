@@ -506,6 +506,16 @@ h2.ruled { font: 700 clamp(1.2rem, 6cqi, 1.75rem)/1.15 var(--display); text-tran
   .stage-meta { right: 4.2rem; }
   .hero-copy { position: static; background: none; }
   .hero-copy .wrap { padding-block: 1.5rem 0; }
+  /* phones: the session strip and its buttons sit right under the raster, then the readouts, then the headline.
+     The stage box steps aside (display: contents) so its children can be reordered with the console. */
+  .hero { position: relative; display: flex; flex-direction: column; }
+  .stage { display: contents; }
+  .raster-box { order: 1; background: #050505; }
+  .bands, .stage-meta { z-index: 1; }   /* reordering paints the raster later; keep these on top of it */
+  .console { order: 2; }
+  .console .wrap > .readout { order: 3; }
+  .hero-copy { order: 3; }
+  .hero-copy .wrap { padding-bottom: 2rem; }
   .console .wrap, .research-head, .cards, .brain-key, .split, .rcard, .pi, .contact { grid-template-columns: minmax(0, 1fr); }
   .controls .label:not(:first-child) { margin-left: 0; flex-basis: 100%; margin-top: .4rem; }
   .pi .frame { max-width: 20rem; }

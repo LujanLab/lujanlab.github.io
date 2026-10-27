@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Luján Lab</title>
+<meta name="description" content="We record hundreds of neurons at once in mice that self-administer drugs, to find the circuit dynamics behind healthy and harmful motivation.">
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta property="og:title" content="Luján Lab">
+<meta property="og:description" content="We record hundreds of neurons at once in mice that self-administer drugs, to find the circuit dynamics behind healthy and harmful motivation.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lujanlab.org/">
+<meta property="og:image" content="https://lujanlab.org/assets/img/brand/share.png">
+<meta property="og:image:alt" content="Luján Lab logo">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://lujanlab.org/">
+<link rel="icon" href="assets/img/brand/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/brand/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Roboto+Condensed:ital,wght@0,400;0,500;0,700;1,400&display=swap">
+<link rel="stylesheet" href="assets/css/site.css?v=d4434b73">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/img/brand/lujan-lab-logo.webp" alt="Luján Lab" width="900" height="202" decoding="async"><span>University of Illinois Chicago</span></a>
+    <button class="menu" type="button" aria-expanded="false" aria-controls="nav-list">Menu</button>
+    <ul id="nav-list"><li><a href="research.html">Research</a></li><li><a href="people.html">People</a></li><li><a href="publications.html">Publications</a></li><li><a href="news.html">News</a></li><li><a href="teaching.html">Teaching</a></li><li><a href="join.html">Join</a></li></ul>
+  </div>
+</nav>
+<main id="main">
+<header class="hero">
+  <div class="stage">
+    <div class="raster-box"><canvas id="raster" aria-label="Spike raster of 367 neurons recorded at the same time, playing in real time"></canvas></div>
+    <div class="bands" id="bands" aria-hidden="true"></div>
+    <div class="stage-meta" id="span">Session time</div>
+    <div class="hero-copy">
+      <div class="wrap">
+        <h1>How brain circuits drive action, and <span class="accent">addiction</span></h1>
+        <p class="lede">Behind this text: 367 neurons recorded simultaneously, playing in real time from a 97-minute Neuropixels session in our lab. Each mark is one spike; rows are sorted by depth in the brain and colored by region.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="console">
+    <div class="wrap">
+      <dl class="readout">
+        <div><dt>Neurons</dt><dd id="rUnits">367</dd></div>
+        <div><dt>Spikes on screen</dt><dd id="rSpikes">0</dd></div>
+        <div><dt>Mean firing rate</dt><dd id="rRate">0</dd></div>
+        <div><dt>Lever presses on screen</dt><dd id="rPress">0</dd></div>
+      </dl>
+      <div>
+        <div class="ov-head">
+          <span style="--c:transparent;margin-left:-1rem"><b>One mouse, one session, <span id="dur"></span></b></span>
+          <span style="--c:var(--orange)">Lever presses per minute</span>
+          <span style="--c:#6b6a6a">Population firing</span>
+          <span style="--c:var(--grey)">Reward cue</span>
+        </div>
+        <div class="ov-box"><canvas id="overview" role="img" aria-label="Lever presses, reward cues and population firing across the whole session, with the part now playing boxed"></canvas></div>
+        <div class="ov-axis" id="axis"></div>
+      </div>
+      <div class="controls">
+        <span class="label">Go to</span>
+        <button class="btn" type="button" data-jump="busy" aria-pressed="true">Busiest pressing</button>
+        <button class="btn" type="button" data-jump="quiet" aria-pressed="false">A quiet stretch</button>
+        <span class="label">Show</span>
+        <button class="btn" type="button" data-w="8" aria-pressed="false">8 s</button>
+        <button class="btn" type="button" data-w="20" aria-pressed="true">20 s</button>
+        <button class="btn" type="button" data-w="42" aria-pressed="false">42 s</button>
+        <button class="btn" type="button" id="play" aria-pressed="false">Pause</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="affil">
+  <div class="wrap"><img src="assets/img/brand/uic-com-logo.webp" alt="University of Illinois College of Medicine Chicago" width="900" height="177" loading="lazy" decoding="async" class="uic-logo"><a href="https://chicago.medicine.uic.edu/anatomy/">Department of Anatomy and Cell Biology</a></div>
+</div>
+
+<section id="research">
+  <div class="wrap">
+    <div class="research-head">
+      <div>
+        <h2>What we study</h2>
+        <p>We study how latent neural dynamics give rise to adaptive and maladaptive behavior. We use data-driven tools to connect cells, circuits and whole-animal behavior in rodents, with a focus on how dopamine, endocannabinoids and oxytocin support motivation and learning, with a particular interest in substance use disorders.</p>
+        <p><a class="more" href="research.html">Our research projects</a></p>
+      </div>
+      <figure class="brain-fig">
+        <div class="brain-view" id="brain" aria-label="Rotatable 3D mouse brain showing every neuron we have recorded"></div>
+        <figcaption class="brain-key">
+          <p><b id="count">5,833 neurons</b> from <span id="mice">10</span> mice and <span id="sess">27</span> sessions, placed in the Allen mouse brain atlas. Drag to rotate; click a region to hide it.</p>
+          <ul class="legend" id="legend"></ul>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <div class="rec-card"><svg class="records" data-records role="img" aria-label="Cumulative lever presses over time for every recording session; hover a line to see that mouse&#x27;s seeking and vulnerability scores"></svg><div class="tip"></div></div><span class="tag">Neuropixels</span>
+        <div class="tx">
+          <h3><span class="qn">Q1</span><a href="research.html#motivational-resilience">Why do some brains walk away from drugs?</a></h3>
+          <p>Not everyone who uses drugs loses control over their use. We record hundreds of striatal and cortical neurons at once with Neuropixels while mice self-administer drugs, look for the activity that marks a move away from seeking, and test it with closed-loop optogenetics.</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="media"><img src="assets/img/research/maternal-histology.webp" alt="Fluorescence micrograph of a brain section from the maternal-brain project" width="1197" height="1038" loading="lazy" decoding="async"></div><span class="tag">Development</span>
+        <div class="tx">
+          <h3><span class="qn">Q2</span><a href="research.html#maternal-brain">Does the pregnant brain process rewards differently?</a></h3>
+          <p>Pregnancy reshapes the brain about as much as adolescence does, yet we know little about what drugs taken during it do to the mother. We follow her oxytocin and dopamine signaling after birth with in vivo imaging, electrophysiology and behavioral economics.</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="ecb-card" data-ecb><svg class="ecb" role="img" aria-label="Single-trial endocannabinoid sensor traces from mouse prefrontal cortex around a lever press, drawn one at a time: rewarded presses in orange, omissions in gray"></svg><span class="ecb-label" aria-hidden="true"></span><span class="ecb-press" aria-hidden="true">Lever press</span><span class="ecb-scale" aria-hidden="true"></span></div><span class="tag">Photometry</span>
+        <div class="tx">
+          <h3><span class="qn">Q3</span><a href="research.html#endocannabinoid-salience">How do endocannabinoids decide which cues get our attention?</a></h3>
+          <p>Dopamine has long been credited with tagging the cues that matter, but endocannabinoids in the prefrontal cortex also steer attention toward cues that predict reward or punishment. We take apart the molecular machinery behind this lipid signal and record how it changes the way cortical neurons respond to those cues.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band-rule">
+  <div class="wrap split">
+    <div>
+      <div class="section-head"><h2>Selected papers</h2><a class="more" href="publications.html">All publications</a></div>
+      <ul class="teaser-pubs">
+        <li><div class="media"><img src="assets/img/pubs/cellrep-2026-figure.webp" alt="Figure from the 2026 Cell Reports paper on midbrain endocannabinoids and action selection" width="1600" height="851" loading="lazy" decoding="async"></div>
+          <div class="pub"><a class="t" href="https://doi.org/10.1016/j.celrep.2026.117298">Midbrain endocannabinoids actuate dopamine-based action selection</a>
+          <p class="j"><i>Cell Reports</i>, 2026</p></div></li>
+        <li><div class="media"><img src="assets/img/pubs/sciadv-2024.webp" alt="Figure from the 2024 Science Advances paper on accumbal cue responses after prenatal THC exposure" width="1600" height="932" loading="lazy" decoding="async"></div>
+          <div class="pub"><a class="t" href="https://doi.org/10.1126/sciadv.adq5652">Dynamic overrepresentation of accumbal cues in food- and opioid-seeking rats after prenatal THC exposure</a>
+          <p class="j"><i>Science Advances</i>, 2024</p></div></li>
+        <li><div class="media"><img src="assets/img/pubs/natcomms-2023.webp" alt="Figure from the 2023 Nature Communications paper showing cue- and reward-evoked dopamine signals" width="1600" height="900" loading="lazy" decoding="async"></div>
+          <div class="pub"><a class="t" href="https://doi.org/10.1038/s41467-023-43131-3">Mobilization of endocannabinoids by midbrain dopamine neurons is required for the encoding of reward prediction</a>
+          <p class="j"><i>Nature Communications</i>, 2023</p></div></li>
+      </ul>
+    </div>
+    <div>
+      <div class="section-head"><h2>News</h2><a class="more" href="news.html">All news</a></div>
+      <ul class="news-teaser">
+        <li><time datetime="2026-08-24">24 Aug 2026</time><p>Caitlin Madden publishes her postbaccalaureate work from the NIH in Neuron: An inherited hypomorphic variant in PIEZO2 reveals structural features of mechanotransduction. Congratulations, Caitlin!</p></li>
+        <li><time datetime="2026-08">Aug 2026</time><p>Grace Phillips joins the lab as a graduate student. Welcome, Grace!</p></li>
+        <li><time datetime="2026-07-09">9 Jul 2026</time><p>Miguel presents some of the lab&#x27;s data at the FENS Forum. Thanks to Drs. Melis and García-Baos for the invitation.</p></li>
+        <li><time datetime="2026-04-28">28 Apr 2026</time><p>The lab hosts Dr. Nicolas Massaly (UCLA) as guest speaker in the Anatomy and Cell Biology Seminar Series.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="cta__photo"><img src="assets/img/gallery/lab-sweatshirts.webp" alt="Three lab members in matching lab sweatshirts" width="1800" height="1350" loading="lazy" decoding="async"></div>
+  <div class="cta__body">
+    <h2 class="rise"><span>Work with us</span></h2>
+    <p>We&#x27;re not hiring right now, but we&#x27;re always glad to meet talented, motivated people who care about the same questions we do. If that&#x27;s you, write to us. We&#x27;re happy to talk about rotations and future openings.</p>
+    <dl class="cta__contact">
+      <div><dt>Email</dt><dd><a class="email" href="mailto:mlujan@uic.edu">mlujan@uic.edu</a></dd></div>
+    </dl>
+    <div class="cta__actions"><a class="cta__btn" href="join.html">How we work</a><a class="cta__btn cta__btn--line" href="people.html">Meet the team</a></div>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div><img src="assets/img/brand/lujan-lab-logo.webp" alt="Luján Lab" width="900" height="202" loading="lazy" decoding="async" class="foot-logo"><a href="https://chicago.medicine.uic.edu/anatomy/">Department of Anatomy and Cell Biology</a><br>University of Illinois Chicago, College of Medicine</div>
+    <address><b>Visit</b><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=909+S+Wolcott+Ave%2C+Chicago%2C+IL+60612">College of Medicine Research Building (COMRB), Room 7091<br>909 S Wolcott Ave<br>Chicago, IL 60612</a></address>
+    <div class="links"><b>Contact</b><a href="mailto:mlujan@uic.edu">mlujan@uic.edu</a><a href="https://scholar.google.com/citations?user=nECs1cUAAAAJ&amp;hl=en">Google Scholar</a><a href="https://bsky.app/profile/lujanma.bsky.social">Bluesky</a></div>
+    <div><img src="assets/img/brand/uic-com-logo.webp" alt="University of Illinois College of Medicine Chicago" width="900" height="177" loading="lazy" decoding="async"></div>
+  </div>
+</footer>
+<script src="assets/js/site.js?v=d4434b73"></script>
+<script src="assets/data/session/meta.js"></script>
+<script src="assets/data/graphics.js"></script>
+<script src="assets/data/brain.js"></script>
+<script src="assets/data/firing.js"></script>
+<script src="assets/js/explorer.js?v=d4434b73"></script>
+<script src="assets/js/home.js?v=d4434b73"></script>
+<script src="assets/js/records.js?v=d4434b73"></script>
+<script src="assets/data/ecb.js"></script>
+<script src="assets/js/ecb.js?v=d4434b73"></script>
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+               "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/" } }
+</script>
+<script type="module" src="assets/js/home-brain.js?v=d4434b73"></script>
+</body>
+</html>

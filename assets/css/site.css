@@ -499,23 +499,16 @@ h2.ruled { font: 700 clamp(1.2rem, 6cqi, 1.75rem)/1.15 var(--display); text-tran
   .site-footer .wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 860px) {
-  .stage { height: auto; min-height: 0; }
-  .raster-box { position: relative; inset: auto; height: 55svh; margin-right: 3.6rem; }
-  .bands { width: 3.6rem; height: 55svh; bottom: auto; font-size: .62rem; }
+  /* phones: as on desktop, the headline sits over a raster that fills the screen; the session strip, its buttons
+     and the readouts are left out, since they need a wide screen to be useful */
+  .stage { height: calc(100svh - 4rem); min-height: 30rem; max-height: 52rem; }
+  .raster-box, .hero-copy { right: 3.6rem; }
+  .bands { width: 3.6rem; font-size: .62rem; }
   .band { padding-left: .4rem; gap: .3rem; }
   .stage-meta { right: 4.2rem; }
-  .hero-copy { position: static; background: none; }
-  .hero-copy .wrap { padding-block: 1.5rem 0; }
-  /* phones: the session strip and its buttons sit right under the raster, then the readouts, then the headline.
-     The stage box steps aside (display: contents) so its children can be reordered with the console. */
-  .hero { position: relative; display: flex; flex-direction: column; }
-  .stage { display: contents; }
-  .raster-box { order: 1; background: #050505; }
-  .bands, .stage-meta { z-index: 1; }   /* reordering paints the raster later; keep these on top of it */
-  .console { order: 2; }
-  .console .wrap > .readout { order: 3; }
-  .hero-copy { order: 3; }
-  .hero-copy .wrap { padding-bottom: 2rem; }
+  .hero-copy { background: linear-gradient(rgb(0 0 0 / 0) 15%, rgb(0 0 0 / .75) 58%, rgb(0 0 0 / .9)); }
+  .hero-copy .wrap { padding-block: 0 2rem; }
+  .console { display: none; }
   .console .wrap, .research-head, .cards, .brain-key, .split, .rcard, .pi, .contact { grid-template-columns: minmax(0, 1fr); }
   .controls .label:not(:first-child) { margin-left: 0; flex-basis: 100%; margin-top: .4rem; }
   .pi .frame { max-width: 20rem; }

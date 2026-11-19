@@ -477,6 +477,10 @@ h2.ruled { font: 700 clamp(1.2rem, 6cqi, 1.75rem)/1.15 var(--display); text-tran
   .how-card:nth-child(2)::before { transition-delay: .15s; } .how-card:nth-child(3)::before { transition-delay: .3s; }
 }
 .how { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem; }
+.how--two { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
+.map-band { padding-bottom: 0; }
+.map-embed { height: clamp(16rem, 28vw, 22rem); background: var(--char); }
+.map-embed iframe { display: block; width: 100%; height: 100%; border: 0; filter: grayscale(1); }
 .contact { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2rem; align-items: start; }
 .contact address { font-style: normal; }
 .empty { border: 1px dashed var(--rule); border-radius: 4px; padding: 2rem; color: var(--dim); max-width: 40rem; }
